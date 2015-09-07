@@ -21,6 +21,7 @@ public class GreetingController {
     @RequestMapping("/test")
     public String greeting() {
         System.out.println("Window user added this");
+        System.out.println("Mac user added this");
         return "Hi!";
     }
 }
