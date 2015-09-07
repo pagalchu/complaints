@@ -20,6 +20,7 @@ public class GreetingController {
 
     @RequestMapping("/test")
     public String greeting() {
+        System.out.println("Window user added this");
         return "Hi!";
     }
 }
