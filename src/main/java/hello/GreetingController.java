@@ -19,6 +19,7 @@ public class GreetingController {
 
     @RequestMapping("/test")
     public String greeting() {
+    	System.out.println("Put a comment from my window machine");
     	System.out.println("Put a comment here to test Eclipse git commit");
     	System.out.println("Window user added this");
         System.out.println("Mac user added this");
