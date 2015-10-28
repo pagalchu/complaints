@@ -25,4 +25,5 @@ public class GreetingController {
         System.out.println("Mac user added this");
         return "Hi!";
     }
+
 }
