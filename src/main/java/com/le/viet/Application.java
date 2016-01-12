@@ -1,4 +1,4 @@
-package hello;
+package com.le.viet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

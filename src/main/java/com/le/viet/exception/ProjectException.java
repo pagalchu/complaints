@@ -1,4 +1,4 @@
-package hello.hello.exception;
+package com.le.viet.exception;
 
 /**
  * Created by vle on 9/24/2015.
