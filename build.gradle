@@ -16,7 +16,7 @@ apply plugin: 'jacoco'
 apply plugin: 'war'
 
 jar {
-    baseName = 'app'
+    baseName = 'template'
     version =  '0.1.0'
 }
 
