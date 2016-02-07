@@ -1,10 +1,10 @@
-package template;
+package dashboard;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TemplateControllerTest {
+public class DashboardControllerTest {
 
 	@Test
 	public void test() {

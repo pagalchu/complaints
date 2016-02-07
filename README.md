@@ -1,2 +1,2 @@
 # app
-Spring boot and gradle build sample project with Java
+Spring boot and gradle build dashboard project
