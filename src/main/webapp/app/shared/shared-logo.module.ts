@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 
-import { LogoComponent } from './logo.component'; 
+import { LogoComponent } from './shared-logo.component'; 
 
 @NgModule({
     declarations: [
         LogoComponent
     ],
-    providers: [
+    imports: [
 
+    ],
+    exports: [
+        LogoComponent
     ]
 
 })

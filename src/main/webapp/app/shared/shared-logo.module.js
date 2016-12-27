@@ -9,29 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var search_component_1 = require("../search/search.component");
-var home_component_1 = require("./home.component");
-var HomeModule = (function () {
-    function HomeModule() {
+var shared_logo_component_1 = require("./shared-logo.component");
+var LogoModule = (function () {
+    function LogoModule() {
     }
-    return HomeModule;
+    return LogoModule;
 }());
-HomeModule = __decorate([
+LogoModule = __decorate([
     core_1.NgModule({
         declarations: [
-            search_component_1.SearchComponent
+            shared_logo_component_1.LogoComponent
         ],
-        imports: [
-            router_1.RouterModule.forChild([
-                { path: 'home', component: home_component_1.HomeComponent }
-            ])
-        ],
+        imports: [],
         exports: [
-            search_component_1.SearchComponent
+            shared_logo_component_1.LogoComponent
         ]
     }),
     __metadata("design:paramtypes", [])
-], HomeModule);
-exports.HomeModule = HomeModule;
-//# sourceMappingURL=home.module.js.map
+], LogoModule);
+exports.LogoModule = LogoModule;
+//# sourceMappingURL=shared-logo.module.js.map

@@ -9,29 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var search_component_1 = require("../search/search.component");
-var home_component_1 = require("./home.component");
-var HomeModule = (function () {
-    function HomeModule() {
+var LogoComponent = (function () {
+    function LogoComponent() {
+        this.headerTitle = 'Viet\'s Vault Application';
     }
-    return HomeModule;
+    return LogoComponent;
 }());
-HomeModule = __decorate([
-    core_1.NgModule({
-        declarations: [
-            search_component_1.SearchComponent
-        ],
-        imports: [
-            router_1.RouterModule.forChild([
-                { path: 'home', component: home_component_1.HomeComponent }
-            ])
-        ],
-        exports: [
-            search_component_1.SearchComponent
-        ]
+LogoComponent = __decorate([
+    core_1.Component({
+        selector: 'logo',
+        templateUrl: 'app/shared/shared-logo.component.html'
     }),
     __metadata("design:paramtypes", [])
-], HomeModule);
-exports.HomeModule = HomeModule;
-//# sourceMappingURL=home.module.js.map
+], LogoComponent);
+exports.LogoComponent = LogoComponent;
+//# sourceMappingURL=shared-logo.component.js.map
