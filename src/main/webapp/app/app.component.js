@@ -11,14 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.pageTitle = "Vault";
     }
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'vault',
-        template: "\n        <div>\n            <nav class='navbar navbar-default'>\n                <div class='container-fluid'>\n                    <div class=\"navbar-header\">\n                        <a class=\"navbar-brand\" href=\"#\">\n                            <img alt=\"Brand\" src=\"app/assets/images/nav-logo.png\">\n                        </a>\n                    </div>\n                    <ul class='nav navbar-nav'>\n                        <li><a [routerLink]=\"['/home']\">Home</a></li>\n                        <li><a href=\"#\">Admin</a></li>\n                    </ul>\n                </div>\n            </nav>\n            <div class='container'>\n                <!--the component view will be display below using the router-outlet-->\n                <router-outlet></router-outlet>\n            </div>\n        </div>\n    "
+        template: "\n        <div>\n            <nav class='navbar navbar-default'>\n                <div class='container-fluid'>\n                    <div class=\"navbar-header\">\n                        <a class=\"navbar-brand\" [routerLink]=\"['/home']\">\n                            <span class=\"glyphicon glyphicon-home\"></span>\n                        </a>\n                    </div>\n                    <ul class='nav navbar-nav'>\n                        <!--<li><a [routerLink]=\"['/home']\">Home</a></li>-->\n                        <li><a [routerLink]=\"['/admin']\">Admin</a></li>\n                    </ul>\n                </div>\n            </nav>\n            <div class='container'>\n                <!--the component view will be display below using the router-outlet-->\n                <router-outlet></router-outlet>\n            </div>\n        </div>\n    "
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);

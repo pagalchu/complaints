@@ -7,13 +7,13 @@ import { Component } from '@angular/core';
             <nav class='navbar navbar-default'>
                 <div class='container-fluid'>
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">
-                            <img alt="Brand" src="app/assets/images/nav-logo.png">
+                        <a class="navbar-brand" [routerLink]="['/home']">
+                            <span class="glyphicon glyphicon-home"></span>
                         </a>
                     </div>
                     <ul class='nav navbar-nav'>
-                        <li><a [routerLink]="['/home']">Home</a></li>
-                        <li><a href="#">Admin</a></li>
+                        <!--<li><a [routerLink]="['/home']">Home</a></li>-->
+                        <li><a [routerLink]="['/admin']">Admin</a></li>
                     </ul>
                 </div>
             </nav>
@@ -25,5 +25,5 @@ import { Component } from '@angular/core';
     `
 })
 export class AppComponent {
-    pageTitle: string = "Vault";
- }
+   
+}

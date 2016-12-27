@@ -21,13 +21,10 @@ var HomeModule = (function () {
 HomeModule = __decorate([
     core_1.NgModule({
         declarations: [
-            //HomeComponent
             logo_component_1.LogoComponent,
             search_component_1.SearchComponent
         ],
         imports: [
-            //LogoModule,
-            //SearchModule,
             router_1.RouterModule.forChild([
                 { path: 'home', component: home_component_1.HomeComponent }
             ])

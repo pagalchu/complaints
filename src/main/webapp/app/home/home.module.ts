@@ -9,13 +9,10 @@ import { HomeComponent } from './home.component';
 
 @NgModule({
     declarations: [
-        //HomeComponent
         LogoComponent,
         SearchComponent
     ],
     imports:[
-        //LogoModule,
-        //SearchModule,
         RouterModule.forChild([
             {path: 'home', component: HomeComponent}
         ])

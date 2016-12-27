@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class LogoComponent {
-
+    headerTitle: string = 'Viet\'s Vault Application';
 }

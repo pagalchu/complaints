@@ -9,6 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+//import { LogoComponent } from '../logo/logo.component';
+var admin_component_1 = require("./admin.component");
 var AdminModule = (function () {
     function AdminModule() {
     }
@@ -17,8 +20,12 @@ var AdminModule = (function () {
 AdminModule = __decorate([
     core_1.NgModule({
         declarations: [],
-        imports: [],
-        providers: []
+        imports: [
+            router_1.RouterModule.forChild([
+                { path: 'admin', component: admin_component_1.AdminComponent }
+            ])
+        ],
+        exports: []
     }),
     __metadata("design:paramtypes", [])
 ], AdminModule);

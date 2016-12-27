@@ -14,7 +14,9 @@ var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var home_module_1 = require("./home/home.module");
+var admin_module_1 = require("./admin/admin.module");
 var home_component_1 = require("./home/home.component");
+var admin_component_1 = require("./admin/admin.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,6 +28,7 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
             home_module_1.HomeModule,
+            admin_module_1.AdminModule,
             router_1.RouterModule.forRoot([
                 { path: 'home', component: home_component_1.HomeComponent },
                 { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -34,7 +37,8 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
-            home_component_1.HomeComponent
+            home_component_1.HomeComponent,
+            admin_component_1.AdminComponent
         ],
         bootstrap: [
             app_component_1.AppComponent
