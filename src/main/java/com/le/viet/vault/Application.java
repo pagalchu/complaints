@@ -1,4 +1,4 @@
-package com.le.viet;
+package com.le.viet.vault;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

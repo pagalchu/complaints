@@ -1,4 +1,4 @@
-package com.le.viet.exception;
+package com.le.viet.vault.exception;
 
 /**
  * Created by vle on 9/24/2015.

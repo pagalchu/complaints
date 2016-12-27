@@ -1,4 +1,4 @@
-package dashboard;
+package com.le.viet.vault;
 
 import static org.junit.Assert.*;
 
