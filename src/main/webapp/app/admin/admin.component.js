@@ -11,7 +11,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var AdminComponent = (function () {
     function AdminComponent() {
+        this.adminMenuTitle = 'Admin Menu';
+        this.adminContentTitle = '';
+        this.defaultContentTitle = 'Add';
+        this.add = 'Add';
+        this.edit = 'Edit';
     }
+    AdminComponent.prototype.ngOnInit = function () {
+        this.adminContentTitle = this.defaultContentTitle;
+    };
+    AdminComponent.prototype.click = function (option) {
+        this.adminContentTitle = option;
+    };
     return AdminComponent;
 }());
 AdminComponent = __decorate([

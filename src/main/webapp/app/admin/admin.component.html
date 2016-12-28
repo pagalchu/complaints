@@ -1,24 +1,29 @@
-<div>
-    <h3 class="text-center">Administrative</h3>
-    <div class="row">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab_add">
-                <span class="glyphicon glyphicon-plus"></span>ADD</a>
-            </li>
-            <li><a href="#tab_edit">
-                <span class="glyphicon glyphicon-pencil"></span>EDIT</a>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" id="tab_add">
-                <h4>Add Tab</h4>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                    ac turpis egestas.</p>
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{adminMenuTitle | uppercase}}</h3>
             </div>
-            <div class="tab-pane" id="tab_edit">
-                <h4>Edit Tab</h4>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                    ac turpis egestas.</p>
+            <div class="panel-body">
+                <div class="list-group">
+                    <a (click)="click('Add')" class="list-group-item"><span class="glyphicon glyphicon-plus"></span> {{add}}</a>
+                    <a (click)="click('Edit')" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span> {{edit}}</a>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{adminContentTitle | uppercase}}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row" *ngIf="adminContentTitle==add">
+                    <admin-add></admin-add>
+                </div>
+                <div class="row" *ngIf="adminContentTitle==edit">
+                    <admin-edit></admin-edit>
+                </div>
             </div>
         </div>
     </div>

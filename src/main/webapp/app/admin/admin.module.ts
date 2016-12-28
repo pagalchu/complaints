@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-//import { LogoComponent } from '../logo/logo.component';
+import { AdminAddContent } from './admin-add-content.component';
+import { AdminEditContent } from './admin-edit-content.component';
 import { AdminComponent } from './admin.component';
 
 @NgModule({
     declarations: [ 
-       //LogoComponent
+       AdminAddContent,
+       AdminEditContent
     ],
     imports: [
         RouterModule.forChild([
@@ -14,7 +16,8 @@ import { AdminComponent } from './admin.component';
         ])
     ],
     exports: [
-        //LogoComponent
+        AdminAddContent,
+        AdminEditContent
     ]           
 })
 

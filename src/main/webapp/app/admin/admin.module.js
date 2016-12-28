@@ -10,7 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-//import { LogoComponent } from '../logo/logo.component';
+var admin_add_content_component_1 = require("./admin-add-content.component");
+var admin_edit_content_component_1 = require("./admin-edit-content.component");
 var admin_component_1 = require("./admin.component");
 var AdminModule = (function () {
     function AdminModule() {
@@ -19,13 +20,19 @@ var AdminModule = (function () {
 }());
 AdminModule = __decorate([
     core_1.NgModule({
-        declarations: [],
+        declarations: [
+            admin_add_content_component_1.AdminAddContent,
+            admin_edit_content_component_1.AdminEditContent
+        ],
         imports: [
             router_1.RouterModule.forChild([
                 { path: 'admin', component: admin_component_1.AdminComponent }
             ])
         ],
-        exports: []
+        exports: [
+            admin_add_content_component_1.AdminAddContent,
+            admin_edit_content_component_1.AdminEditContent
+        ]
     }),
     __metadata("design:paramtypes", [])
 ], AdminModule);
