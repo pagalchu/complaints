@@ -12,6 +12,10 @@ var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
     }
+    AppComponent.prototype.ngOnInit = function () {
+        //if no session or not login, show the login UI
+        console.log("oninit AppComponent...");
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([

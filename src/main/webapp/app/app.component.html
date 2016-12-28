@@ -1,26 +1,28 @@
-<div class="row">
-    <nav class='navbar navbar-default'>
-        <div class='container-fluid'>
-            <div class="navbar-header">
-                <a class="navbar-brand" [routerLink]="['/home']">
-                    <span class="glyphicon glyphicon-home"></span>
-                </a>
+<div class='container'>
+    <div class="row">
+        <nav class='navbar navbar-default'>
+            <div class='container-fluid'>
+                <div class="navbar-header">
+                    <a class="navbar-brand" [routerLink]="['/home']">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </div>
+                <ul class='nav navbar-nav'>
+                    <li><a [routerLink]="['/admin']">Admin</a></li>
+                </ul>
             </div>
-            <ul class='nav navbar-nav'>
-                <li><a [routerLink]="['/admin']">Admin</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class='container'>
-        <!--the component view will be display below using the router-outlet-->
-        <div class="row">      
-            <logo></logo>
-        </div>
-        <div class="row">        
-            <router-outlet></router-outlet>
-        </div>
-        <div class="row" style="margin-top:100px;">
-            <footer></footer>
+        </nav>
+        <div class='container'>
+            <!--the component view will be display below using the router-outlet-->
+            <div class="row">      
+                <logo></logo>
+            </div>
+            <div class="row">        
+                <router-outlet></router-outlet>
+            </div>
+            <div class="row">
+                <footer></footer>
+            </div>
         </div>
     </div>
 </div>
