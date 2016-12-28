@@ -9,17 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var FooterComponent = (function () {
+    function FooterComponent() {
+        this.developedBy = 'Developed by: Viet Le';
     }
-    return AppComponent;
+    return FooterComponent;
 }());
-AppComponent = __decorate([
+FooterComponent = __decorate([
     core_1.Component({
-        selector: 'vault',
-        templateUrl: 'app/app.component.html'
+        selector: 'footer',
+        templateUrl: 'app/shared/shared-footer.component.html'
     }),
     __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], FooterComponent);
+exports.FooterComponent = FooterComponent;
+//# sourceMappingURL=shared-footer.component.js.map

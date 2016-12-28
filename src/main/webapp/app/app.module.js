@@ -14,6 +14,7 @@ var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var shared_logo_module_1 = require("./shared/shared-logo.module");
+var shared_footer_module_1 = require("./shared/shared-footer.module");
 var home_module_1 = require("./home/home.module");
 var admin_module_1 = require("./admin/admin.module");
 var home_component_1 = require("./home/home.component");
@@ -29,6 +30,7 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
             shared_logo_module_1.LogoModule,
+            shared_footer_module_1.FooterModule,
             home_module_1.HomeModule,
             admin_module_1.AdminModule,
             router_1.RouterModule.forRoot([
