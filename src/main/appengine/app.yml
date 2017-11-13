@@ -1,0 +1,6 @@
+runtime: java
+env: flex
+service: default
+
+health_check:
+  enable_health_check: true
