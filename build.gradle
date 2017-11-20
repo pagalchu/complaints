@@ -29,7 +29,7 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile ("javax.ws.rs:jsr311-api:1.0")
-    compile group: 'org.elasticsearch.client', name: 'transport', version: '5.1.2'
+
 
     compile('org.springframework.boot:spring-boot-starter-data-elasticsearch'){
         //exclude group: 'org.apache.logging.log4j'
