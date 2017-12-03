@@ -1,8 +1,10 @@
 package com.sv.complaints.services;
 
+import com.sv.complaints.Utils.CommonUtils;
 import com.sv.complaints.dtos.ComplaintDto;
 import com.sv.complaints.dtos.ESDto;
 import com.sv.complaints.es.ComplaintsRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +15,11 @@ public class ComplaintServices {
     private ComplaintsRepository complaintsRepository;
     public ComplaintDto createComplaint(String complaint)
     {
-        String json = "d";
         ESDto dto = new ESDto();
-        dto.setId("1234");
-        dto.setCreatDate("10/23/1977");
-        dto.setUser("Jay Saraswati");
-        dto.setJsonObject(json);
+        dto.setId(""+CommonUtils.getTimeInMillis());
+        dto.setCreatDate(CommonUtils.getCurrentDateTime());
+        dto.setUser("Default");
+        dto.setJsonObject(complaint);
         complaintsRepository.save(dto);
         return new ComplaintDto();
 
@@ -28,4 +29,6 @@ public class ComplaintServices {
     {
         return new ComplaintDto();
     }
+
+
 }

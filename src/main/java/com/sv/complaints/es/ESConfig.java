@@ -20,9 +20,8 @@ public class ESConfig {
     @Bean
     public Client client()
     {
-        Client esClient = null;
         String esClusterName = "elasticsearch";
-        String esHost = "35.185.121.190";
+        String esHost = "35.190.146.136";
         int esPort = 9300;
 
         Settings esSettings = Settings.settingsBuilder()
@@ -31,7 +30,7 @@ public class ESConfig {
                 .build();
 
 
-            esClient = (TransportClient.builder().settings(esSettings).build()).addTransportAddress(new InetSocketTransportAddress(new InetSocketAddress(esHost, esPort)));
+        Client esClient = (TransportClient.builder().settings(esSettings).build()).addTransportAddress(new InetSocketTransportAddress(new InetSocketAddress(esHost, esPort)));
 
         return esClient;
 
