@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
+import java.util.List;
 
 @RestController
 @RequestMapping("/complaint")
@@ -26,10 +27,10 @@ public class Complaint {
         ComplaintDto complaint =  complaintServices.createComplaint(complaintRequest);
         return CommonUtils.buildServiceResponse(complaint, null);
     }
-    @RequestMapping(value = "/searchComplaint", method = RequestMethod.POST)
-    public ServiceResponse searchComplaint(@Context HttpServletRequest context, String seachCriteria )
+    @RequestMapping(value = "/searchByKeywords", method = RequestMethod.POST)
+    public ServiceResponse searchByKeywords(@Context HttpServletRequest context,  @RequestBody final String keywords )
     {
-        ComplaintDto complainSearchresult =  complaintServices.searchComplaint(seachCriteria);
-        return CommonUtils.buildServiceResponse(complainSearchresult, null);
+        List<ComplaintDto> complainSearchResult =  complaintServices.searchComplaint(keywords);
+        return CommonUtils.buildServiceResponse(complainSearchResult, null);
     }
 }

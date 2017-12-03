@@ -2,31 +2,22 @@ package com.sv.complaints.dtos;
 
 public class ComplaintDto {
 
-    public String complaintType;
-    public String complaintLocation;
-    public String complaint;
+    public String createDate;
+    public String jsonObject;
 
-    public String getComplaintType() {
-        return complaintType;
+    public String getCreateDate() {
+        return createDate;
     }
 
-    public void setComplaintType(String complaintType) {
-        this.complaintType = complaintType;
+    public String getJsonObject() {
+        return jsonObject;
     }
 
-    public String getComplaintLocation() {
-        return complaintLocation;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 
-    public void setComplaintLocation(String complaintLocation) {
-        this.complaintLocation = complaintLocation;
-    }
-
-    public String getComplaint() {
-        return complaint;
-    }
-
-    public void setComplaint(String complaint) {
-        this.complaint = complaint;
+    public void setJsonObject(String jsonObject) {
+        this.jsonObject = jsonObject;
     }
 }
