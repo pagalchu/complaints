@@ -12,6 +12,8 @@ import java.util.TimeZone;
 
 public class CommonUtils {
 
+
+
     public static ServiceResponse buildServiceResponse(Object result, ServiceResponse serviceResponse) {
         ServiceResponse response = new ServiceResponse();
 
@@ -83,13 +85,23 @@ public class CommonUtils {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
        return dateFormat.format(cal.getTime());
     }
+    public static String getIndexInfo()
+    {
+        return "/complaints/reports";
+    }
 
-    public static void main(String s[])
+    public static String buildSearchQuery(String searchword)
+    {
+        String query =  "{\"query\":{\"bool\":{\"must\":[{\"query_string\":{\"default_field\":\"_all\",\"query\":\"mendpara1023\"}}],\"must_not\":[],\"should\":[]}},\"from\":0,\"size\":100,\"sort\":[],\"aggs\":{}}";
+        return query.replace("mendpara1023", searchword );
+    }
+
+   /* public static void main(String s[])
     {
         Calendar cal = Calendar.getInstance();
         cal.setTimeZone(TimeZone.getTimeZone("EST"));
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         System.out.println(dateFormat.format(cal.getTime()));
 
-    }
+    }*/
 }

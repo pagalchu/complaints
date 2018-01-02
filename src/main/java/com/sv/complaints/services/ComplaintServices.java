@@ -1,59 +1,76 @@
 package com.sv.complaints.services;
 
-import com.sv.complaints.Utils.CommonUtils;
-import com.sv.complaints.Utils.Constants;
-import com.sv.complaints.dtos.ComplaintDto;
-import com.sv.complaints.dtos.ESDto;
-import com.sv.complaints.es.ComplaintsRepository;
 
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.sv.complaints.Utils.CommonUtils;
+import com.sv.complaints.dtos.ComplaintDto;
+
+import netscape.javascript.JSObject;
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.ContentType;
+import org.apache.http.nio.entity.NStringEntity;
+import org.apache.http.util.EntityUtils;
+import org.elasticsearch.client.Response;
+import org.elasticsearch.client.RestClient;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 @Service
 public class ComplaintServices {
 
     @Autowired
-    private ComplaintsRepository complaintsRepository;
+    private RestClient restClient;
     public ComplaintDto createComplaint(String complaint)
     {
-        ESDto dto = new ESDto();
-        dto.setId(""+CommonUtils.getTimeInMillis());
-        dto.setCreatDate(CommonUtils.getCurrentDateTime());
-        dto.setUser("Default");
-        dto.setJsonObject(complaint);
-        complaintsRepository.save(dto);
-        return new ComplaintDto();
-
-    }
-
-    public  List<ComplaintDto> searchComplaint(String searchCriteria)
-    {
-        QueryBuilder queryBuilder = QueryBuilders.queryStringQuery(searchCriteria).field(Constants.ES_FIELD_JSONOBJECT);
-        Iterable<ESDto> searchList = complaintsRepository.search(queryBuilder);
-
-        if(searchList==null)
+        try
         {
-            return null;
+            String indexAndId = CommonUtils.getIndexInfo() + "/"+CommonUtils.getTimeInMillis();
+            HttpEntity entity = new NStringEntity(complaint, ContentType.APPLICATION_JSON);
+            restClient.performRequest("PUT", indexAndId, Collections.<String, String>emptyMap(), entity);
         }
-
-        List<ComplaintDto> complaints = new ArrayList<>();
-
-        for (ESDto searchResult: searchList ) {
-            ComplaintDto complaint = new ComplaintDto();
-            complaint.setCreateDate(searchResult.getCreatDate());
-            complaint.setJsonObject(searchResult.getJsonObject());
-            complaints.add(complaint);
+        catch (Exception e)
+        {
+            System.out.println("failed with " +e.getMessage());
         }
-
-        return complaints;
-
+        return null;
     }
+
+   public String searchComplaint(String searchCriteria)
+    {
+        try
+        {
+            HttpEntity entity = new NStringEntity(CommonUtils.buildSearchQuery(searchCriteria));
+            String info = "/complaints/_search";
+            Response response = restClient.performRequest("GET",info, Collections.singletonMap("pretty", "true"), entity);
+            String fullContents = EntityUtils.toString(response.getEntity());
+            System.out.println(fullContents);
+            JSONObject fullContentJSON = new JSONObject(fullContents);
+            JSONArray hits = (fullContentJSON.getJSONObject("hits")).getJSONArray("hits");
+            JSONObject finalResult = new JSONObject();
+           for( int i=0; i<hits.length(); i++)
+           {
+               JSONObject source = (hits.optJSONObject(i)).getJSONObject("_source");
+               finalResult.accumulate("finalResult",source);
+
+           }
+           return finalResult.get("finalResult").toString();
+
+        }
+        catch (Exception e)
+        {
+            System.out.println("failed with " +e.getMessage());
+        }
+
+        return null;
+    }
+
+
+
 
 
 }

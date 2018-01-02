@@ -30,7 +30,7 @@ public class Complaint {
     @RequestMapping(value = "/searchByKeywords", method = RequestMethod.POST)
     public ServiceResponse searchByKeywords(@Context HttpServletRequest context,  @RequestBody final String keywords )
     {
-        List<ComplaintDto> complainSearchResult =  complaintServices.searchComplaint(keywords);
+        String complainSearchResult =  complaintServices.searchComplaint(keywords);
         return CommonUtils.buildServiceResponse(complainSearchResult, null);
     }
 }
