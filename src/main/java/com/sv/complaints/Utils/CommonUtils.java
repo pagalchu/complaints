@@ -4,10 +4,12 @@ import com.sv.complaints.exceptions.ProcessingException;
 import com.sv.complaints.response.ResponseCodes;
 import com.sv.complaints.response.ServiceResponse;
 
+import java.security.SecureRandom;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import java.util.TimeZone;
 
 public class CommonUtils {
@@ -96,12 +98,31 @@ public class CommonUtils {
         return query.replace("mendpara1023", searchword );
     }
 
-   /* public static void main(String s[])
+    public static String getSearchString()
     {
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeZone(TimeZone.getTimeZone("EST"));
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        System.out.println(dateFormat.format(cal.getTime()));
+        return "/complaints/_search";
+    }
 
-    }*/
+    static public String getToken() {
+        String CharSet = "ABCDEFGHJKLMNOPQRSTUVWXYZ";
+        char randomChar=' ';
+
+        String randomNumber;
+        SecureRandom rand = new SecureRandom();
+        try {
+            randomChar = CharSet.charAt(new Random().nextInt(CharSet.length()));
+            randomNumber =  ""+((rand.nextInt(49000) + rand.nextInt(49000)) + 2000);
+        } catch (Throwable t) {
+            randomNumber=  ""+rand.nextInt(1000);
+        }
+
+        return randomChar+randomNumber;
+    }
+
+   public static void main(String s[])
+    {
+        for (int i=9; i<50;i++)
+        System.out.println(getToken());
+
+    }
 }
