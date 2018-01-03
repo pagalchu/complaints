@@ -1,7 +1,6 @@
 package com.sv.complaints.controllers;
 
 import com.sv.complaints.Utils.CommonUtils;
-import com.sv.complaints.dtos.ComplaintDto;
 import com.sv.complaints.exceptions.ProcessingException;
 import com.sv.complaints.response.ServiceResponse;
 import com.sv.complaints.services.ComplaintServices;
