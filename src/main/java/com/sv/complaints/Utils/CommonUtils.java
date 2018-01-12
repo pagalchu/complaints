@@ -3,6 +3,7 @@ package com.sv.complaints.Utils;
 import com.sv.complaints.exceptions.ProcessingException;
 import com.sv.complaints.response.ResponseCodes;
 import com.sv.complaints.response.ServiceResponse;
+import org.json.JSONObject;
 
 import java.security.SecureRandom;
 import java.text.DateFormat;
@@ -118,10 +119,18 @@ public class CommonUtils {
         return randomChar+randomNumber;
     }
 
-   public static void main(String s[])
+    public static void appendHeaderDetails(JSONObject complaint, String token)
+    {
+        complaint.put("createts", ""+ getCurrentDateTime());
+        complaint.put("token", token);
+
+    }
+
+  /* public static void main(String s[])
     {
         for (int i=9; i<50;i++)
         System.out.println(getToken());
 
-    }
+    }*/
+
 }

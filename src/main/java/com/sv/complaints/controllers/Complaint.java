@@ -4,6 +4,8 @@ import com.sv.complaints.Utils.CommonUtils;
 import com.sv.complaints.exceptions.ProcessingException;
 import com.sv.complaints.response.ServiceResponse;
 import com.sv.complaints.services.ComplaintServices;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,7 +43,7 @@ public class Complaint {
     {
         try
         {
-            String complainSearchResult =  complaintServices.searchComplaint(keywords);
+            JSONObject complainSearchResult =  complaintServices.searchComplaint(keywords);
             return CommonUtils.buildServiceResponse(complainSearchResult, null);
         }
         catch(ProcessingException e)

@@ -27,9 +27,11 @@ public class ComplaintServices {
     {
         try
         {
+            JSONObject jsonComplaint = new JSONObject(complaint);
             String token = CommonUtils.getToken();
+            CommonUtils.appendHeaderDetails(jsonComplaint, token);
             String indexAndId = CommonUtils.getIndexInfo() + "/"+CommonUtils.getTimeInMillis();
-            HttpEntity entity = new NStringEntity(complaint, ContentType.APPLICATION_JSON);
+            HttpEntity entity = new NStringEntity(jsonComplaint.toString(), ContentType.APPLICATION_JSON);
             restClient.performRequest("PUT", indexAndId, Collections.<String, String>emptyMap(), entity);
             return token;
         }
@@ -39,7 +41,7 @@ public class ComplaintServices {
         }
     }
 
-   public String searchComplaint(String searchCriteria) throws ProcessingException
+   public JSONObject searchComplaint(String searchCriteria) throws ProcessingException
     {
         try
         {
@@ -60,7 +62,7 @@ public class ComplaintServices {
                finalResult.accumulate("finalResult",source);
 
            }
-           return finalResult.get("finalResult").toString();
+           return finalResult;
         }
         catch (Throwable e)
         {
