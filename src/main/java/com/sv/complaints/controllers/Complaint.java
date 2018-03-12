@@ -2,6 +2,7 @@ package com.sv.complaints.controllers;
 
 import com.sv.complaints.Utils.CommonUtils;
 import com.sv.complaints.exceptions.ProcessingException;
+import com.sv.complaints.response.ResponseCodes;
 import com.sv.complaints.response.ServiceResponse;
 import com.sv.complaints.services.ComplaintServices;
 import org.json.JSONArray;
@@ -34,6 +35,7 @@ public class Complaint {
         }
         catch(ProcessingException e)
         {
+            System.out.println("=== compaint exception ==="+e.getMessage());
             return CommonUtils.buildServiceResponse(e, null);
         }
 
@@ -43,11 +45,16 @@ public class Complaint {
     {
         try
         {
+            if(keywords==null || keywords.length()<4)
+            {
+                return CommonUtils.buildServiceResponse(ResponseCodes.NOT_ENOUGH_SEARCH_CRITERIA, null);
+            }
             JSONObject complainSearchResult =  complaintServices.searchComplaint(keywords);
             return CommonUtils.buildServiceResponse(complainSearchResult, null);
         }
         catch(ProcessingException e)
         {
+            System.out.println("=== compaint exception ==="+e.getMessage());
             return CommonUtils.buildServiceResponse(e, null);
         }
 

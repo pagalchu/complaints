@@ -94,7 +94,15 @@ public class CommonUtils {
 
     public static String buildSearchQuery(String searchword)
     {
-        String query =  "{\"query\":{\"bool\":{\"must\":[{\"query_string\":{\"default_field\":\"_all\",\"query\":\"mendpara1023\"}}],\"must_not\":[],\"should\":[]}},\"from\":0,\"size\":100,\"sort\":[],\"aggs\":{}}";
+        String query =  "{\n" +
+                "    \"query\": {\n" +
+                "        \"query_string\": {\n" +
+                "            \"query\": \"mendpara1023\",\n" +
+                "            \"fields\": [\"description\"]\n" +
+                "        }\n" +
+                "    },\n" +
+                "\"size\":100\n" +
+                "}";
         return query.replace("mendpara1023", searchword );
     }
 

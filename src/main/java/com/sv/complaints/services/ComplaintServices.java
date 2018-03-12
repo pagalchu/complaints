@@ -33,10 +33,12 @@ public class ComplaintServices {
             String indexAndId = CommonUtils.getIndexInfo() + "/"+CommonUtils.getTimeInMillis();
             HttpEntity entity = new NStringEntity(jsonComplaint.toString(), ContentType.APPLICATION_JSON);
             restClient.performRequest("PUT", indexAndId, Collections.<String, String>emptyMap(), entity);
+            System.out.println("=== complaint created ===" +token);
             return token;
         }
         catch (Throwable e)
         {
+            System.out.println("=== failure ===" +e.getMessage());
             throw new ProcessingException(ResponseCodes.INTERNAL_ERROR, "error occured while performing save: "+  e.getMessage());
         }
     }
@@ -45,8 +47,10 @@ public class ComplaintServices {
     {
         try
         {
-            HttpEntity entity = new NStringEntity(CommonUtils.buildSearchQuery(searchCriteria));
-            Response response = restClient.performRequest("GET",CommonUtils.getSearchString(), Collections.singletonMap("pretty", "false"), entity);
+            String searchQuery = CommonUtils.buildSearchQuery(searchCriteria);
+            HttpEntity entity = new NStringEntity(searchQuery, ContentType.APPLICATION_JSON);
+            String searchString = CommonUtils.getSearchString();
+            Response response = restClient.performRequest("POST",searchString, Collections.singletonMap("pretty", "false"), entity);
             String fullContents = EntityUtils.toString(response.getEntity());
             System.out.println(fullContents);
             //convert full content to JSONObject
@@ -55,6 +59,7 @@ public class ComplaintServices {
             //from JSONObject, get inner level hits - this is format provided by ES.
             JSONArray hits = (fullContentJSON.getJSONObject("hits")).getJSONArray("hits");
             JSONObject finalResult = new JSONObject();
+            System.out.println(hits.length());
            for( int i=0; i<hits.length(); i++)
            {
                //loop over hits and get source. _source is the content provided by user
@@ -66,7 +71,7 @@ public class ComplaintServices {
         }
         catch (Throwable e)
         {
-            System.out.println("failed with " +e.getMessage());
+            System.out.println("===failed with " +e.getMessage());
             throw new ProcessingException(ResponseCodes.INTERNAL_ERROR, "error occured while performing search: "+  e.getMessage());
         }
     }

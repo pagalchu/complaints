@@ -15,8 +15,10 @@ public class ESConfig {
     @Bean
     public RestClient client()
     {
+        System.out.println("=== start es===");
         RestClient restClient = RestClient.builder(
-                new HttpHost("127.0.0.1", 9200, "http")).build();
+                new HttpHost("localhost", 9200, "http")).build();
+        System.out.println("=== end es===");
         return restClient;
 
     }
