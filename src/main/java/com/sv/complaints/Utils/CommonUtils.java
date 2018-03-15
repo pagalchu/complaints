@@ -15,6 +15,7 @@ import java.util.TimeZone;
 public class CommonUtils {
 
 
+    public static final String token = "token";
 
     public static ServiceResponse buildServiceResponse(Object result, ServiceResponse serviceResponse) {
         ServiceResponse response = new ServiceResponse();
@@ -130,7 +131,18 @@ public class CommonUtils {
     public static void appendHeaderDetails(JSONObject complaint, String token)
     {
         complaint.put("createts", ""+ getCurrentDateTime());
-        complaint.put("token", token);
+        complaint.put(token, token);
+
+    }
+
+    public static void cleanUpData(JSONObject source)
+    {
+        if(source ==null)
+        {
+            return;
+        }
+
+       source.remove(token);
 
     }
 

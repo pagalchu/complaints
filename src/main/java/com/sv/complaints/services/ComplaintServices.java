@@ -64,6 +64,8 @@ public class ComplaintServices {
            {
                //loop over hits and get source. _source is the content provided by user
                JSONObject source = (hits.optJSONObject(i)).getJSONObject("_source");
+               //clean up data
+               CommonUtils.cleanUpData(source);
                finalResult.accumulate("finalResult",source);
 
            }
