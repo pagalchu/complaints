@@ -10,7 +10,8 @@ public enum ResponseCodes {
     UNKNOWN_ERROR(101, "Unknown Error", true),
     DATABASE_ERROR(102, "Database Error", true),
     INTERNAL_ERROR(103, "Internal Error", true),
-    NOT_ENOUGH_SEARCH_CRITERIA(104, "Provide four or more characters for search string", false);
+    NOT_ENOUGH_SEARCH_CRITERIA(104, "Provide four or more characters for search string", false),
+    INVALID_REQUEST(105, "Invalid request", false);
 
 
     private int code;

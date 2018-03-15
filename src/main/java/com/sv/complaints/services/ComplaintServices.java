@@ -38,7 +38,7 @@ public class ComplaintServices {
         }
         catch (Throwable e)
         {
-            System.out.println("=== failure ===" +e.getMessage());
+            System.out.println("=== failure ===" +e.getMessage() +" date:" +CommonUtils.getCurrentDateTime() +" complaint object is: "+ complaint);
             throw new ProcessingException(ResponseCodes.INTERNAL_ERROR, "error occured while performing save: "+  e.getMessage());
         }
     }
@@ -78,7 +78,7 @@ public class ComplaintServices {
         }
         catch (Throwable e)
         {
-            System.out.println("===failed with " +e.getMessage());
+            System.out.println("===failed with "+" date:" +CommonUtils.getCurrentDateTime() +"exception is: " +e.getMessage());
             throw new ProcessingException(ResponseCodes.INTERNAL_ERROR, "error occured while performing search: "+  e.getMessage());
         }
     }
