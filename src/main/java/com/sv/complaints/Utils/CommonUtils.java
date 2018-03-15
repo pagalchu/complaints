@@ -98,7 +98,7 @@ public class CommonUtils {
                 "    \"query\": {\n" +
                 "        \"query_string\": {\n" +
                 "            \"query\": \"mendpara1023\",\n" +
-                "            \"fields\": [\"description\"]\n" +
+                "            \"fields\": [\"desc\"]\n" +
                 "        }\n" +
                 "    },\n" +
                 "\"size\":100\n" +
