@@ -49,7 +49,7 @@ public class Complaint {
             {
                 return CommonUtils.buildServiceResponse(ResponseCodes.NOT_ENOUGH_SEARCH_CRITERIA, null);
             }
-            JSONObject complainSearchResult =  complaintServices.searchComplaint(keywords);
+            String complainSearchResult =  complaintServices.searchComplaint(keywords);
             return CommonUtils.buildServiceResponse(complainSearchResult, null);
         }
         catch(ProcessingException e)

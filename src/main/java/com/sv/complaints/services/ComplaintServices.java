@@ -43,7 +43,7 @@ public class ComplaintServices {
         }
     }
 
-   public JSONObject searchComplaint(String searchCriteria) throws ProcessingException
+   public String searchComplaint(String searchCriteria) throws ProcessingException
     {
         try
         {
@@ -67,7 +67,14 @@ public class ComplaintServices {
                finalResult.accumulate("finalResult",source);
 
            }
-           return finalResult;
+
+           //if no results found, return empty set
+           if(finalResult.length()==0)
+           {
+               return new JSONArray().toString();
+           }
+           JSONArray result = (JSONArray) finalResult.get("finalResult");
+           return result.toString();
         }
         catch (Throwable e)
         {
