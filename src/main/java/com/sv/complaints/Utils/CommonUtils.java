@@ -108,7 +108,7 @@ public class CommonUtils {
 
     public static String getSearchString()
     {
-        return "/complaints/_search";
+        return "/complaints/reports/_search";
     }
 
     static public String getToken() {
