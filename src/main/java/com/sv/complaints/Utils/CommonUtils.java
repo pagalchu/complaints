@@ -15,7 +15,7 @@ import java.util.TimeZone;
 public class CommonUtils {
 
 
-    public static final String token = "token";
+    public static final String tokenKey = "token";
 
     public static ServiceResponse buildServiceResponse(Object result, ServiceResponse serviceResponse) {
         ServiceResponse response = new ServiceResponse();
@@ -128,10 +128,10 @@ public class CommonUtils {
         return randomChar+randomNumber;
     }
 
-    public static void appendHeaderDetails(JSONObject complaint, String token)
+    public static void appendHeaderDetails(JSONObject complaint, String tokenValue)
     {
         complaint.put("createts", ""+ getCurrentDateTime());
-        complaint.put(token, token);
+        complaint.put(tokenKey, tokenValue);
 
     }
 
@@ -142,7 +142,7 @@ public class CommonUtils {
             return;
         }
 
-       source.remove(token);
+       source.remove(tokenKey);
 
     }
 
