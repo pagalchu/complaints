@@ -23,6 +23,14 @@ public class ComplaintServices {
 
     @Autowired
     private RestClient restClient;
+
+
+    /**
+     * used to create/submit complaints
+     * @param complaint
+     * @return
+     * @throws ProcessingException
+     */
     public String createComplaint(String complaint) throws ProcessingException
     {
         try
@@ -30,7 +38,7 @@ public class ComplaintServices {
             JSONObject jsonComplaint = new JSONObject(complaint);
             String token = CommonUtils.getToken();
             CommonUtils.appendHeaderDetails(jsonComplaint, token);
-            String indexAndId = CommonUtils.getIndexInfo() + "/"+CommonUtils.getTimeInMillis();
+            String indexAndId = CommonUtils.getReportsTypePath() + "/"+CommonUtils.getTimeInMillis();
             HttpEntity entity = new NStringEntity(jsonComplaint.toString(), ContentType.APPLICATION_JSON);
             restClient.performRequest("PUT", indexAndId, Collections.<String, String>emptyMap(), entity);
             System.out.println("=== complaint created ===" +token);
@@ -49,7 +57,7 @@ public class ComplaintServices {
         {
             String searchQuery = CommonUtils.buildSearchQuery(searchCriteria);
             HttpEntity entity = new NStringEntity(searchQuery, ContentType.APPLICATION_JSON);
-            String searchString = CommonUtils.getSearchString();
+            String searchString = CommonUtils.getReportsSearchPath();
             Response response = restClient.performRequest("POST",searchString, Collections.singletonMap("pretty", "false"), entity);
             String fullContents = EntityUtils.toString(response.getEntity());
             JSONObject fullContentJSON = new JSONObject(fullContents);
@@ -77,7 +85,7 @@ public class ComplaintServices {
         }
         catch (Throwable e)
         {
-            System.out.println("===failed with "+" date:" +CommonUtils.getCurrentDateTime() +"exception is: " +e.getMessage());
+            System.out.println("===failed with "+" date:" +CommonUtils.getCurrentDateTime() +"exception is: " +e.getMessage() + searchCriteria);
             throw new ProcessingException(ResponseCodes.INTERNAL_ERROR, "error occured while performing search: "+  e.getMessage());
         }
     }

@@ -5,8 +5,6 @@ import com.sv.complaints.exceptions.ProcessingException;
 import com.sv.complaints.response.ResponseCodes;
 import com.sv.complaints.response.ServiceResponse;
 import com.sv.complaints.services.ComplaintServices;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,7 +47,7 @@ public class Complaint {
     {
         try
         {
-            if(keywords==null || keywords.length()<4)
+            if(keywords==null || keywords.trim().length()<4)
             {
                 return CommonUtils.buildServiceResponse(ResponseCodes.NOT_ENOUGH_SEARCH_CRITERIA, null);
             }

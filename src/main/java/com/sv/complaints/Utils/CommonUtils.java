@@ -16,6 +16,10 @@ public class CommonUtils {
 
 
     public static final String tokenKey = "token";
+    public static final String createts = "createts";
+    public static final String reportsTypePath = "/complaints/reports";
+    public static final String reportsTypeSearchPath = "/complaints/reports/_search";
+
 
     public static ServiceResponse buildServiceResponse(Object result, ServiceResponse serviceResponse) {
         ServiceResponse response = new ServiceResponse();
@@ -76,6 +80,7 @@ public class CommonUtils {
         }
         catch(Exception e)
         {
+            System.out.println("=== failure in getTimeInMillis() ===" +e.getMessage());
             return  System.currentTimeMillis();
         }
 
@@ -83,14 +88,27 @@ public class CommonUtils {
 
     public static String getCurrentDateTime()
     {
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeZone(TimeZone.getTimeZone("EST"));
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-       return dateFormat.format(cal.getTime());
+        try
+        {
+            Calendar cal = Calendar.getInstance();
+            cal.setTimeZone(TimeZone.getTimeZone("EST"));
+            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            return dateFormat.format(cal.getTime());
+        }
+        catch(Exception e)
+        {
+            System.out.println("=== failure in getCurrentDateTime() ===" +e.getMessage());
+            return "";
+        }
     }
-    public static String getIndexInfo()
+    public static String getReportsTypePath()
     {
-        return "/complaints/reports";
+        return reportsTypePath;
+    }
+
+    public static String getReportsSearchPath()
+    {
+        return reportsTypeSearchPath;
     }
 
     public static String buildSearchQuery(String searchword)
@@ -107,11 +125,6 @@ public class CommonUtils {
         return query.replace("mendpara1023", searchword );
     }
 
-    public static String getSearchString()
-    {
-        return "/complaints/reports/_search";
-    }
-
     static public String getToken() {
         String CharSet = "ABCDEFGHJKLMNOPQRSTUVWXYZ";
         char randomChar=' ';
@@ -122,6 +135,7 @@ public class CommonUtils {
             randomChar = CharSet.charAt(new Random().nextInt(CharSet.length()));
             randomNumber =  ""+((rand.nextInt(49000) + rand.nextInt(49000)) + 2000);
         } catch (Throwable t) {
+            System.out.println("=== failure in getToken() ===" +t.getMessage());
             randomNumber=  ""+rand.nextInt(1000);
         }
 
@@ -130,8 +144,16 @@ public class CommonUtils {
 
     public static void appendHeaderDetails(JSONObject complaint, String tokenValue)
     {
-        complaint.put("createts", ""+ getCurrentDateTime());
-        complaint.put(tokenKey, tokenValue);
+        try
+        {
+            complaint.put(createts, ""+ getCurrentDateTime());
+            complaint.put(tokenKey, tokenValue);
+        }
+        catch(Exception e)
+        {
+            System.out.println("=== failure in appendHeaderDetails() ===" +e.getMessage());
+        }
+
 
     }
 
