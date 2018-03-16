@@ -17,8 +17,13 @@ public class CommonUtils {
 
     public static final String tokenKey = "token";
     public static final String createts = "createts";
+
+    //reports
     public static final String reportsTypePath = "/complaints/reports";
     public static final String reportsTypeSearchPath = "/complaints/reports/_search";
+
+    //contacts form
+    public static final String contactsTypePath = "/complaints/contacts";
 
 
     public static ServiceResponse buildServiceResponse(Object result, ServiceResponse serviceResponse) {
@@ -109,6 +114,11 @@ public class CommonUtils {
     public static String getReportsSearchPath()
     {
         return reportsTypeSearchPath;
+    }
+
+    public static String getContactsTypePath()
+    {
+        return contactsTypePath;
     }
 
     public static String buildSearchQuery(String searchword)

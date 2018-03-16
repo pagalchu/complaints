@@ -91,6 +91,25 @@ public class ComplaintServices {
     }
 
 
+    public void submitContactUs(String contactUs) throws ProcessingException
+    {
+        try
+        {
+            JSONObject jsonContactUs = new JSONObject(contactUs);
+            CommonUtils.appendHeaderDetails(jsonContactUs, "NONE");
+            String indexAndId = CommonUtils.getContactsTypePath() + "/"+CommonUtils.getTimeInMillis();
+            HttpEntity entity = new NStringEntity(jsonContactUs.toString(), ContentType.APPLICATION_JSON);
+            restClient.performRequest("PUT", indexAndId, Collections.<String, String>emptyMap(), entity);
+            System.out.println("=== contact created ===");
+        }
+        catch (Throwable e)
+        {
+            System.out.println("=== failure ===" +e.getMessage() +" date:" +CommonUtils.getCurrentDateTime() +" contact object is: "+ contactUs);
+            throw new ProcessingException(ResponseCodes.INTERNAL_ERROR, "error occured while performing save contact: "+  e.getMessage());
+        }
+    }
+
+
 
 
 

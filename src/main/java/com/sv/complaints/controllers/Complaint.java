@@ -32,8 +32,8 @@ public class Complaint {
             {
                 return CommonUtils.buildServiceResponse(ResponseCodes.INVALID_REQUEST, null);
             }
-            String complaint =  complaintServices.createComplaint(complaintRequest);
-            return CommonUtils.buildServiceResponse(complaint, null);
+            String token =  complaintServices.createComplaint(complaintRequest);
+            return CommonUtils.buildServiceResponse(token, null);
         }
         catch(ProcessingException e)
         {
@@ -57,6 +57,25 @@ public class Complaint {
         catch(ProcessingException e)
         {
             System.out.println("=== compaint exception ==="+e.getMessage());
+            return CommonUtils.buildServiceResponse(e, null);
+        }
+    }
+
+    @RequestMapping(value = "/submitContactUs", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ServiceResponse submitContactUs(@Context HttpServletRequest context,  @RequestBody final String contactUs )
+    {
+        try
+        {
+            if(contactUs==null || contactUs.trim().length()<10)
+            {
+                return CommonUtils.buildServiceResponse(ResponseCodes.INVALID_REQUEST, null);
+            }
+            complaintServices.submitContactUs(contactUs);
+            return CommonUtils.buildServiceResponse("success", null);
+        }
+        catch(ProcessingException e)
+        {
+            System.out.println("=== submitContactUs exception ==="+e.getMessage());
             return CommonUtils.buildServiceResponse(e, null);
         }
 
