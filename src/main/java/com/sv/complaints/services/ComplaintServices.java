@@ -52,7 +52,7 @@ public class ComplaintServices {
             String searchString = CommonUtils.getSearchString();
             Response response = restClient.performRequest("POST",searchString, Collections.singletonMap("pretty", "false"), entity);
             String fullContents = EntityUtils.toString(response.getEntity());
-            System.out.println(fullContents);
+            //System.out.println(fullContents);
             //convert full content to JSONObject
             JSONObject fullContentJSON = new JSONObject(fullContents);
 
@@ -70,13 +70,16 @@ public class ComplaintServices {
 
            }
 
+
+            System.out.println(finalResult.toString());
+
            //if no results found, return empty set
            if(finalResult.length()==0)
            {
-               return new JSONArray().toString();
+               return finalResult.toString();
            }
-           JSONArray result = (JSONArray) finalResult.get("finalResult");
-           return result.toString();
+           return finalResult.get("finalResult").toString();
+
         }
         catch (Throwable e)
         {
