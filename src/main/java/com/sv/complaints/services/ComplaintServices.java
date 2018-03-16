@@ -52,8 +52,6 @@ public class ComplaintServices {
             String searchString = CommonUtils.getSearchString();
             Response response = restClient.performRequest("POST",searchString, Collections.singletonMap("pretty", "false"), entity);
             String fullContents = EntityUtils.toString(response.getEntity());
-            //System.out.println(fullContents);
-            //convert full content to JSONObject
             JSONObject fullContentJSON = new JSONObject(fullContents);
 
             //from JSONObject, get inner level hits - this is format provided by ES.
@@ -69,10 +67,6 @@ public class ComplaintServices {
                finalResult.accumulate("finalResult",source);
 
            }
-
-
-            System.out.println(finalResult.toString());
-
            //if no results found, return empty set
            if(finalResult.length()==0)
            {
