@@ -15,6 +15,7 @@ import java.util.TimeZone;
 public class CommonUtils {
 
 
+    //header related constants
     public static final String tokenKey = "token";
     public static final String createts = "createts";
 
