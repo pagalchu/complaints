@@ -30,7 +30,7 @@ public class Complaint {
     {
         try
         {
-            if(complaintRequest==null || complaintRequest.length()<80)
+            if(complaintRequest==null || complaintRequest.trim().length()<80)
             {
                 return CommonUtils.buildServiceResponse(ResponseCodes.INVALID_REQUEST, null);
             }
