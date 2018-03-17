@@ -10,10 +10,10 @@ import java.util.Properties;
 
 
 public class Email {
-    public final static String to = "smendpara@gmail.com";
+    public final static String to = Secret.to;
     public final static String  host = "smtp.gmail.com";
     public final static String  password = Secret.password;
-    public final static String  userName = "rajpatel012010@gmail.com";
+    public final static String  userName = Secret.userName;
     public final static String  subject = "Email from Complaint application";
 
 
