@@ -27,9 +27,16 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+
+    compile fileTree(dir:'libs',includes:['*.jar*'])
+
     compile("org.springframework.boot:spring-boot-starter-web")
     compile ("javax.ws.rs:jsr311-api:1.0")
     compile 'org.elasticsearch.client:elasticsearch-rest-client-sniffer:6.1.1'
     compile "org.json:json:20160212"
+
+
+
+
 }
 
