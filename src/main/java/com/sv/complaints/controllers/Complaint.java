@@ -1,6 +1,7 @@
 package com.sv.complaints.controllers;
 
 import com.sv.complaints.Utils.CommonUtils;
+import com.sv.complaints.Utils.Email;
 import com.sv.complaints.exceptions.ProcessingException;
 import com.sv.complaints.response.ResponseCodes;
 import com.sv.complaints.response.ServiceResponse;
@@ -38,6 +39,7 @@ public class Complaint {
         catch(ProcessingException e)
         {
             System.out.println("=== compaint exception ==="+e.getMessage());
+            Email.sendEmail(e.getMessage() +"--->"+ complaintRequest);
             return CommonUtils.buildServiceResponse(e, null);
         }
 
@@ -57,6 +59,7 @@ public class Complaint {
         catch(ProcessingException e)
         {
             System.out.println("=== compaint exception ==="+e.getMessage());
+            Email.sendEmail(e.getMessage() +"--->"+ keywords);
             return CommonUtils.buildServiceResponse(e, null);
         }
     }
@@ -76,8 +79,15 @@ public class Complaint {
         catch(ProcessingException e)
         {
             System.out.println("=== submitContactUs exception ==="+e.getMessage());
+            Email.sendEmail(e.getMessage()+"--->"+contactUs);
             return CommonUtils.buildServiceResponse(e, null);
         }
 
+    }
+
+    @RequestMapping(value = "/sendEmail", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ServiceResponse sendEMail(@Context HttpServletRequest context,  @RequestBody final String emailBody ) {
+        Email.sendEmail(emailBody);
+        return CommonUtils.buildServiceResponse("success", null);
     }
 }

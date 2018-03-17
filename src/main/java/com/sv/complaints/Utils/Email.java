@@ -45,14 +45,14 @@ public class Email {
             email.setText(message);
             Transport.send(email);
               }
-        catch(Exception e)
+        catch(Throwable e)
         {
             System.out.println(e.getMessage());
 
         }
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         sendEmail("Jay Saraswati!!!");
-    }
+    }*/
 }
