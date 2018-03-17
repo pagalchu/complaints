@@ -14,7 +14,7 @@ public class Email {
     public final static String  host = "smtp.gmail.com";
     public final static String  password = Secret.password;
     public final static String  userName = Secret.userName;
-    public final static String  subject = "Email from Complaint application";
+    public final static String  subject = "Complaint app";
 
 
 
@@ -41,7 +41,7 @@ public class Email {
             Message email = new MimeMessage(session);
             email.setFrom(new InternetAddress(userName));
             email.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            email.setSubject(subject);
+            email.setSubject(subject +" - "+ CommonUtils.getCurrentDateTime());
             email.setText(message);
             Transport.send(email);
               }
